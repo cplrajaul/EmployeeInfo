@@ -1,0 +1,103 @@
+﻿@model EmployeeInfo.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+    var photoPath = "~/Images/" + (Model.PhotoPath ?? "NoImage.jpg");
+}
+
+
+
+<div>
+    <h4>Employee Details</h4>
+    <hr />
+    <dl class="row btn-light">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        @*<dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PhotoPath)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PhotoPath)
+            </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JoinDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JoinDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ModifiedTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ModifiedTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Department.DepartmentName)
+        </dd>*@
+    </dl>
+    <div>
+        <div class="form-group">
+           
+            <label asp-for="Department" class="control-label"></label>
+            <select asp-for="DepartmentId" class="form-control" 
+                    asp-items="@(new SelectList( ViewBag.Departments, "DepartmentId", "DepartmentName"))" disabled>
+            </select>
+            <span asp-validation-for="DepartmentId" class="text-danger"></span>
+        </div>
+    </div>
+    <div>
+        <div class="form-group">
+            <img src="@photoPath" class="change_edit" width="90" height="90" asp-append-version="true" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EmployeeId" class="btn btn-sm btn-info rounded-0">Edit</a> |
+    @*<a asp-action="Delete" asp-route-id="@Model.EmployeeId" class="btn btn-sm btn-danger rounded-0">< Delete</a>*@
+    <a asp-action="Index" class="btn btn-sm btn-primary rounded-0"> Back to List</a>
+</div>

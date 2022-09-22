@@ -1,0 +1,115 @@
+﻿@model IEnumerable<EmployeeInfo.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3 class="text-center text-uppercase">list of employee</h3>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Create New</a>
+</p>
+<div class="table-responsive-sm">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JoinDate)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhotoPath)
+                </th>
+
+                @*<th>Opertions</th>*@
+           
+                <th>Edit</th>
+                <th>Details</th>
+                <th>Delete</th>
+              
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JoinDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                </td>
+                <td>
+                    <img src="~/Images/@item.PhotoPath" height="80" width="80" asp-append-version="true" />
+                </td>
+
+                @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Details", "_Details", new { id = item.EmployeeId }, new { @class = "btn btn-secondary" })
+                </td>*@
+
+
+                <td><a asp-action="Edit" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i>Edit</a></td>
+                <td> <a asp-action="Details" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-warning rounded-0"><i class="fa fa-pencil-alt"></i>Details</a></td>
+                <td><a asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i>Delete</a></td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
